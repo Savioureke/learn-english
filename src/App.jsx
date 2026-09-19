@@ -8,7 +8,6 @@ import CoursesPage from './pages/CoursesPage';
 import MentorsPage from './pages/MentorsPage';
 import ContactPage from './pages/ContactPage';
 import StudentDashboard from './pages/StudentDashboard';
-import ModuleDetailsPage from './pages/ModuleDetailsPage';
 import BookTutorPage from './pages/BookTutorPage';
 import AuthModal from './components/AuthModal';
 
@@ -49,7 +48,6 @@ function MainAppContent() {
   const handleAuthSuccess = (user) => {
     setLoggedInUser(user);
     setAuthModalOpen(false);
-    // Direct navigation to dedicated Student Dashboard page
     navigate('/student-dashboard');
   };
 
@@ -117,10 +115,6 @@ function MainAppContent() {
                 onOpenAuth={handleOpenAuth} 
               />
             } 
-          />
-          <Route 
-            path="/student/module/:id" 
-            element={<ModuleDetailsPage />} 
           />
           <Route 
             path="/book-tutor/:id" 

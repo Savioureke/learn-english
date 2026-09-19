@@ -86,8 +86,8 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'signup', onAu
           </h3>
           <p className="text-xs text-gray-300 mt-1">
             {tab === 'signup' 
-              ? 'Create your free account to unlock English video tutorials & expert tutors' 
-              : 'Access your Student Video Tutorials & personalized learning schedule'}
+              ? 'Create your free account to book 1-on-1 English lessons & free trial classes' 
+              : 'Access your Student Dashboard & scheduled Google Meet classes'}
           </p>
 
           {/* Tabs */}
@@ -198,7 +198,7 @@ export default function AuthModal({ isOpen, onClose, initialTab = 'signup', onAu
               disabled={loading}
               className="btn-one w-full py-3.5 text-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
-              <span>{loading ? 'Processing...' : (tab === 'signup' ? 'Complete Registration & Unlock Portal' : 'Sign In to Portal')}</span>
+              <span>{loading ? 'Processing...' : (tab === 'signup' ? 'Complete Registration & Access Tutors' : 'Sign In to Dashboard')}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

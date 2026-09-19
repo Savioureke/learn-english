@@ -1,7 +1,8 @@
 import React from 'react';
-import { Play, Sparkles, CheckCircle2, Star, Users, ArrowRight, Video } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Play, Sparkles, CheckCircle2, Star, Users, ArrowRight, Video, Calendar } from 'lucide-react';
 
-export default function HeroSection({ onOpenAuth, onOpenStudentPortal, loggedInUser }) {
+export default function HeroSection({ onOpenAuth, loggedInUser }) {
   return (
     <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-gradient-to-b from-white via-surface to-white">
       {/* Background Decorative Blur Elements */}
@@ -27,40 +28,40 @@ export default function HeroSection({ onOpenAuth, onOpenStudentPortal, loggedInU
 
             {/* Subheading / Description */}
             <p className="text-body text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Transform your speaking confidence, pronunciation, and vocabulary with personalized online tutoring and interactive video courses designed for real-world fluency.
+              Transform your speaking confidence, pronunciation, and vocabulary with personalized online 1-on-1 tutoring and interactive classes on Google Meet.
             </p>
 
             {/* Key Benefits List */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 max-w-lg mx-auto lg:mx-0 text-left">
               <div className="flex items-center gap-2.5 text-navy font-heading font-medium text-sm">
                 <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
-                <span>1-on-1 Native English Tutors</span>
+                <span>1-on-1 Live Native English Tutors</span>
               </div>
               <div className="flex items-center gap-2.5 text-navy font-heading font-medium text-sm">
                 <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
-                <span>Interactive Fluency Video Lessons</span>
+                <span>Free 20-Min Level Assessment</span>
               </div>
               <div className="flex items-center gap-2.5 text-navy font-heading font-medium text-sm">
                 <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
-                <span>Flexible Online Schedule</span>
+                <span>Flexible Google Meet Schedule</span>
               </div>
               <div className="flex items-center gap-2.5 text-navy font-heading font-medium text-sm">
                 <CheckCircle2 className="w-5 h-5 text-accent shrink-0" />
-                <span>Verified Progress Certification</span>
+                <span>45-Min Standard Structured Lessons</span>
               </div>
             </div>
 
             {/* CTA Buttons */}
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               {loggedInUser ? (
-                <button
-                  onClick={onOpenStudentPortal}
+                <Link
+                  to="/student-dashboard"
                   className="btn-one flex items-center gap-2 text-base px-8 py-4 cursor-pointer"
                 >
-                  <Video className="w-5 h-5" />
-                  <span>Access Video Tutorials</span>
+                  <Calendar className="w-5 h-5" />
+                  <span>Go to My Student Dashboard</span>
                   <ArrowRight className="w-5 h-5" />
-                </button>
+                </Link>
               ) : (
                 <button
                   onClick={() => onOpenAuth('signup')}
@@ -136,14 +137,14 @@ export default function HeroSection({ onOpenAuth, onOpenStudentPortal, loggedInU
                 </div>
               </div>
 
-              {/* Floating Card 2 - Video Lessons Badge */}
+              {/* Floating Card 2 - Google Meet Lesson Badge */}
               <div className="absolute -bottom-6 -right-6 z-20 bg-navy text-white p-4 rounded-2xl shadow-xl hidden sm:flex items-center gap-3 animate-float-delayed">
-                <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white">
+                <div className="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
                   <Video className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-heading font-bold text-white text-sm">Interactive Videos</h4>
-                  <p className="text-xs text-gray-300">Fluency Practice Included</p>
+                  <h4 className="font-heading font-bold text-white text-sm">Google Meet Classroom</h4>
+                  <p className="text-xs text-gray-300">Live 1-on-1 Practice</p>
                 </div>
               </div>
 

@@ -4,23 +4,23 @@ import { ChevronDown, HelpCircle } from 'lucide-react';
 const FAQS = [
   {
     question: "How do I start learning English on this platform?",
-    answer: "Getting started is simple! Click 'Start Learning Now' or 'Sign Up' to create your free student account. Once logged in, you get immediate access to our video tutorial portal and live tutor directory."
+    answer: "Getting started is simple! Click 'Start Learning Now' or 'Sign Up' to create your free student account. Once logged in, you can browse verified native tutors and book a Free 20-Minute Trial Lesson."
   },
   {
-    question: "What happens when I register as a student?",
-    answer: "Your student registration is securely saved into our central Supabase database. As soon as you sign up and log in, your Student Video Portal is automatically unlocked with step-by-step English fluency video lessons."
+    question: "How do the 1-on-1 English lessons work?",
+    answer: "All lessons are held 1-on-1 via Google Meet. Standard lessons are 45 minutes long, designed for intensive speaking practice, conversational fluency, pronunciation correction, and grammar refinement."
   },
   {
-    question: "Are the tutors native English speakers?",
-    answer: "Yes! Our live tutors are certified native and expert English speakers (TEFL/CELTA credentials). You can view their qualifications, student ratings, hourly rates, and book 1-on-1 private lessons."
+    question: "Are the tutors certified native English speakers?",
+    answer: "Yes! Our live tutors are certified English instructors (TEFL/CELTA credentials). You can view their qualifications, student ratings, 45-min rates, and book classes or multi-class packages directly."
   },
   {
-    question: "Is this connected to the English Tutor platform?",
-    answer: "Yes, Learn English shares the exact same Supabase backend with the English Tutor platform. Tutors who register on English Tutor automatically appear on this website so students can find expert mentors."
+    question: "Can I try a class before buying a package?",
+    answer: "Yes! Many verified instructors offer a Free 20-Minute Trial Session ($0.00) where they assess your current fluency level and design a customized lesson plan for your goals."
   },
   {
-    question: "Can I watch the video tutorials on my mobile phone?",
-    answer: "Absolutely! The Student Video Portal and lessons are 100% mobile-responsive, allowing you to practice English speaking, pronunciation, and grammar on any device, anywhere."
+    question: "How do I join my scheduled Google Meet class?",
+    answer: "Once booked, your upcoming classes and direct Google Meet classroom links will appear in your 'My Booked Classes' tab in the Student Dashboard. Simply click 'Join Google Meet Classroom' at your lesson time."
   }
 ];
 
