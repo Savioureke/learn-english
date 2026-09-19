@@ -105,89 +105,101 @@ export default function StudentDashboard({ loggedInUser, onOpenAuth }) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-10">
+    <div className="min-h-screen bg-slate-50 py-6 sm:py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Header Banner */}
-        <div className="bg-gradient-to-r from-navy via-navy-light to-navy text-white rounded-3xl p-6 sm:p-10 shadow-xl mb-8 relative overflow-hidden">
+        <div className="bg-gradient-to-r from-navy via-navy-light to-navy text-white rounded-3xl p-5 sm:p-10 shadow-xl mb-6 sm:mb-8 relative overflow-hidden">
           <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-white/5 skew-x-12 pointer-events-none"></div>
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
-            <div className="flex items-center gap-5">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-accent text-white flex items-center justify-center font-extrabold text-2xl sm:text-3xl shadow-lg border-2 border-white/30 shrink-0">
+            <div className="flex items-start sm:items-center gap-3.5 sm:gap-5">
+              <div className="w-12 h-12 sm:w-20 sm:h-20 rounded-2xl bg-accent text-white flex items-center justify-center font-extrabold text-xl sm:text-3xl shadow-lg border-2 border-white/30 shrink-0 mt-1 sm:mt-0">
                 {loggedInUser?.full_name ? loggedInUser.full_name.charAt(0).toUpperCase() : 'S'}
               </div>
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-heading font-bold px-3 py-0.5 rounded-full flex items-center gap-1.5">
-                    <Shield className="w-3.5 h-3.5" /> Student Learning Portal
+              <div className="space-y-1.5 min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] sm:text-xs font-heading font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shrink-0">
+                    <Shield className="w-3 h-3 text-emerald-400" /> Student Portal
                   </span>
-                  <span className="bg-white/10 text-white/90 text-xs font-heading px-2.5 py-0.5 rounded-full">
+                  <span className="bg-white/10 text-white/90 text-[11px] sm:text-xs font-heading px-2.5 py-0.5 rounded-full truncate max-w-[210px] sm:max-w-none">
                     Account: {loggedInUser?.email || 'Active Student'}
                   </span>
                 </div>
-                <h1 className="text-2xl sm:text-4xl font-extrabold font-heading text-white">
+                <h1 className="text-xl sm:text-4xl font-extrabold font-heading text-white tracking-tight">
                   Welcome back, <span className="text-white">{loggedInUser?.full_name || 'Student'}</span>!
                 </h1>
-                <p className="text-xs sm:text-sm text-gray-300 max-w-xl">
+                <p className="text-xs sm:text-sm text-gray-300 max-w-xl leading-relaxed">
                   Browse verified English teachers below to book <strong>Free 20-Min Trials</strong> or structured <strong>45-Min Lessons on Google Meet</strong>.
                 </p>
               </div>
             </div>
 
             {/* Header Right Action Badges */}
-            <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-3 shrink-0">
               <button
                 onClick={() => handleTabChange('tutors')}
-                className="px-5 py-3 rounded-2xl bg-accent hover:bg-accent-hover text-white font-heading font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl bg-accent hover:bg-accent-hover text-white font-heading font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
               >
-                <Video className="w-4 h-4" />
-                <span>Book a Live Tutor</span>
+                <Video className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <span>Book Tutor</span>
               </button>
               <button
                 onClick={() => handleTabChange('bookings')}
-                className="px-5 py-3 rounded-2xl bg-white/15 hover:bg-white/25 text-white font-heading font-bold text-xs sm:text-sm flex items-center gap-2 border border-white/20 transition-all cursor-pointer"
+                className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-2xl bg-white/15 hover:bg-white/25 text-white font-heading font-bold text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 border border-white/20 transition-all cursor-pointer"
               >
-                <Calendar className="w-4 h-4 text-emerald-400" />
-                <span>My Booked Classes ({studentBookings.length})</span>
+                <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
+                <span>My Classes ({studentBookings.length})</span>
               </button>
             </div>
           </div>
 
           {/* Quick Metrics Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-6 border-t border-white/15">
-            <div className="bg-white/10 rounded-2xl p-3.5 backdrop-blur-xs">
-              <div className="text-xs text-gray-300 font-heading">Available Tutors</div>
-              <div className="text-xl sm:text-2xl font-bold font-heading text-white mt-0.5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/15">
+            <div className="bg-white/10 rounded-2xl p-3 sm:p-3.5 backdrop-blur-xs">
+              <div className="text-[11px] sm:text-xs text-gray-300 font-heading">Available Tutors</div>
+              <div className="text-base sm:text-2xl font-bold font-heading text-white mt-0.5">
                 {liveTutors.length} Live Instructors
               </div>
             </div>
-            <div className="bg-white/10 rounded-2xl p-3.5 backdrop-blur-xs">
-              <div className="text-xs text-gray-300 font-heading">Lesson Platform</div>
-              <div className="text-xl sm:text-2xl font-bold font-heading text-emerald-300 mt-0.5">
+            <div className="bg-white/10 rounded-2xl p-3 sm:p-3.5 backdrop-blur-xs">
+              <div className="text-[11px] sm:text-xs text-gray-300 font-heading">Lesson Platform</div>
+              <div className="text-base sm:text-2xl font-bold font-heading text-emerald-300 mt-0.5">
                 Google Meet
               </div>
             </div>
-            <div className="bg-white/10 rounded-2xl p-3.5 backdrop-blur-xs">
-              <div className="text-xs text-gray-300 font-heading">Trial Session</div>
-              <div className="text-xl sm:text-2xl font-bold font-heading text-amber-300 mt-0.5">
+            <div className="bg-white/10 rounded-2xl p-3 sm:p-3.5 backdrop-blur-xs">
+              <div className="text-[11px] sm:text-xs text-gray-300 font-heading">Trial Session</div>
+              <div className="text-base sm:text-2xl font-bold font-heading text-amber-300 mt-0.5">
                 Free 20 Mins ($0)
               </div>
             </div>
-            <div className="bg-white/10 rounded-2xl p-3.5 backdrop-blur-xs">
-              <div className="text-xs text-gray-300 font-heading">Lesson Duration</div>
-              <div className="text-xl sm:text-2xl font-bold font-heading text-blue-300 mt-0.5">
+            <div className="bg-white/10 rounded-2xl p-3 sm:p-3.5 backdrop-blur-xs">
+              <div className="text-[11px] sm:text-xs text-gray-300 font-heading">Lesson Duration</div>
+              <div className="text-base sm:text-2xl font-bold font-heading text-blue-300 mt-0.5">
                 45 Mins / Class
               </div>
             </div>
           </div>
         </div>
 
-        {/* Dashboard Navigation Tabs */}
-        <div className="flex overflow-x-auto scrollbar-none space-x-2 border-b border-gray-200 pb-2 mb-8">
+        {/* Dashboard Navigation Tabs - Responsive 2-Column Grid (Zero Mobile Cutoff) */}
+        <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-6 sm:mb-8">
           {[
-            { id: 'tutors', label: '1. Browse & Book Live Tutors', icon: Video, badge: `${liveTutors.length} Live` },
-            { id: 'bookings', label: '2. My Booked Classes & Google Meet Links', icon: Calendar, badge: studentBookings.length > 0 ? `${studentBookings.length}` : null },
+            { 
+              id: 'tutors', 
+              labelDesktop: '1. Browse & Book Live Tutors', 
+              labelMobile: '1. Browse Tutors',
+              icon: Video, 
+              badge: `${liveTutors.length} Live` 
+            },
+            { 
+              id: 'bookings', 
+              labelDesktop: '2. My Booked Classes & Google Meet Links', 
+              labelMobile: '2. Booked Classes',
+              icon: Calendar, 
+              badge: `${studentBookings.length}` 
+            },
           ].map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -195,16 +207,21 @@ export default function StudentDashboard({ loggedInUser, onOpenAuth }) {
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className={`flex items-center space-x-2 px-5 py-3 rounded-2xl font-heading font-semibold text-xs sm:text-sm whitespace-nowrap transition-all cursor-pointer ${
+                className={`flex items-center justify-center sm:justify-between px-3.5 sm:px-6 py-3 sm:py-3.5 rounded-2xl font-heading font-semibold text-xs sm:text-sm transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-navy text-white shadow-md'
+                    ? 'bg-navy text-white shadow-md ring-2 ring-navy/20'
                     : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
                 }`}
               >
-                <Icon className="w-4 h-4" />
-                <span>{tab.label}</span>
+                <div className="flex items-center gap-1.5 sm:gap-2.5 truncate">
+                  <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-accent' : 'text-gray-500'}`} />
+                  <span className="hidden sm:inline truncate">{tab.labelDesktop}</span>
+                  <span className="sm:hidden truncate">{tab.labelMobile}</span>
+                </div>
                 {tab.badge && (
-                  <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${isActive ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-800'}`}>
+                  <span className={`ml-1.5 sm:ml-2 text-[10px] sm:text-xs px-2 py-0.5 rounded-full font-bold shrink-0 ${
+                    isActive ? 'bg-white/20 text-white' : 'bg-emerald-100 text-emerald-800'
+                  }`}>
                     {tab.badge}
                   </span>
                 )}
@@ -216,12 +233,12 @@ export default function StudentDashboard({ loggedInUser, onOpenAuth }) {
         {/* ================= TAB 1: LIVE TUTORS DIRECTORY ================= */}
         {activeTab === 'tutors' && (
           <div className="space-y-6 animate-fadeIn">
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="bg-white rounded-3xl p-5 sm:p-8 border border-gray-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <span className="text-xs uppercase font-heading font-bold text-accent tracking-wider">
                   Verified 1-on-1 English Instructors
                 </span>
-                <h2 className="text-2xl font-bold font-heading text-navy mt-1">
+                <h2 className="text-xl sm:text-2xl font-bold font-heading text-navy mt-1">
                   Select an Instructor & Book Your Next Class
                 </h2>
                 <p className="text-xs sm:text-sm text-gray-500 mt-1">
@@ -230,7 +247,7 @@ export default function StudentDashboard({ loggedInUser, onOpenAuth }) {
               </div>
 
               <div className="flex items-center gap-2 bg-emerald-50 text-emerald-900 border border-emerald-200 px-4 py-2.5 rounded-2xl text-xs font-semibold shrink-0">
-                <Gift className="w-4 h-4 text-emerald-600" />
+                <Gift className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Free 20-Min Trials Available on Eligible Profiles</span>
               </div>
             </div>
@@ -271,8 +288,8 @@ export default function StudentDashboard({ loggedInUser, onOpenAuth }) {
                           alt={tutor.full_name}
                           className="w-16 h-16 rounded-2xl object-cover border-2 border-gray-100 shadow-sm shrink-0"
                         />
-                        <div className="space-y-1">
-                          <h3 className="text-lg font-bold font-heading text-navy group-hover:text-accent transition-colors">
+                        <div className="space-y-1 min-w-0">
+                          <h3 className="text-lg font-bold font-heading text-navy group-hover:text-accent transition-colors truncate">
                             {tutor.full_name}
                           </h3>
                           <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
@@ -327,9 +344,9 @@ export default function StudentDashboard({ loggedInUser, onOpenAuth }) {
         {/* ================= TAB 2: MY BOOKED CLASSES & GOOGLE MEET LINKS ================= */}
         {activeTab === 'bookings' && (
           <div className="space-y-6 animate-fadeIn">
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="bg-white rounded-3xl p-5 sm:p-8 border border-gray-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h2 className="text-2xl font-bold font-heading text-navy">
+                <h2 className="text-xl sm:text-2xl font-bold font-heading text-navy">
                   My Booked 1-on-1 Classes & Google Meet Links
                 </h2>
                 <p className="text-xs sm:text-sm text-gray-500 mt-1">
@@ -339,16 +356,16 @@ export default function StudentDashboard({ loggedInUser, onOpenAuth }) {
 
               <button
                 onClick={() => handleTabChange('tutors')}
-                className="px-5 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-heading font-bold text-xs shadow-sm transition-all"
+                className="px-5 py-2.5 rounded-xl bg-accent hover:bg-accent-hover text-white font-heading font-bold text-xs shadow-sm transition-all cursor-pointer"
               >
                 + Book Another Class
               </button>
             </div>
 
             {studentBookings.length === 0 ? (
-              <div className="p-12 text-center bg-white rounded-3xl border border-gray-200 space-y-3">
-                <Calendar className="w-14 h-14 text-gray-300 mx-auto" />
-                <h3 className="text-xl font-bold font-heading text-navy">No scheduled classes yet</h3>
+              <div className="p-8 sm:p-12 text-center bg-white rounded-3xl border border-gray-200 space-y-3">
+                <Calendar className="w-12 h-12 sm:w-14 sm:h-14 text-gray-300 mx-auto" />
+                <h3 className="text-lg sm:text-xl font-bold font-heading text-navy">No scheduled classes yet</h3>
                 <p className="text-xs sm:text-sm text-gray-500 max-w-md mx-auto">
                   Browse our verified English tutors to schedule your Free 20-Minute Trial or 45-Minute coaching lesson.
                 </p>
@@ -368,7 +385,7 @@ export default function StudentDashboard({ loggedInUser, onOpenAuth }) {
                   return (
                     <div 
                       key={b.id}
-                      className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-200 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-6"
+                      className="bg-white rounded-3xl p-5 sm:p-8 border border-gray-200 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6"
                     >
                       <div className="space-y-2 max-w-2xl">
                         <div className="flex flex-wrap items-center gap-2">
@@ -389,7 +406,7 @@ export default function StudentDashboard({ loggedInUser, onOpenAuth }) {
                           </span>
                         </div>
 
-                        <h3 className="text-xl font-bold font-heading text-navy">
+                        <h3 className="text-lg sm:text-xl font-bold font-heading text-navy">
                           {b.lesson_topic || 'Spoken English & Conversational Coaching'}
                         </h3>
 
@@ -405,7 +422,7 @@ export default function StudentDashboard({ loggedInUser, onOpenAuth }) {
                       </div>
 
                       {/* Right Action: Launch Google Meet */}
-                      <div className="flex flex-col sm:flex-row lg:flex-col gap-2 shrink-0 items-end">
+                      <div className="flex flex-col sm:flex-row lg:flex-col gap-2 shrink-0 items-stretch sm:items-end">
                         <a
                           href={meetLink}
                           target="_blank"
@@ -416,7 +433,7 @@ export default function StudentDashboard({ loggedInUser, onOpenAuth }) {
                           <span>Join Google Meet Classroom</span>
                         </a>
 
-                        <span className="text-[11px] text-gray-400 text-right block font-mono">
+                        <span className="text-[11px] text-gray-400 text-center sm:text-right block font-mono">
                           Meeting ID: {meetLink.replace('https://meet.google.com/', '')}
                         </span>
                       </div>
