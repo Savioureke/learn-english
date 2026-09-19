@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    color: #4a5355;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    background-color: #ffffff;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Jost', sans-serif;
+    color: #0b104a;
+    font-weight: 600;
+  }
+}
+
+/* Custom Design Styles from Eduleb */
+.section-padding {
+  padding: 100px 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
+  }
+}
+
+.section-title h2 {
+  font-size: 38px;
+  line-height: 48px;
+  font-weight: 700;
+  color: #0b104a;
+  margin-bottom: 12px;
+}
+
+.section-title span {
+  color: #ff553e;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Button One Styling */
+.btn-one {
+  background: #ff553e;
+  color: #ffffff !important;
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 50px;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(255, 85, 62, 0.25);
+}
+
+.btn-one:hover {
+  background: #0b104a;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(11, 16, 74, 0.3);
+}
+
+/* Header Button Styling */
+.header-btn {
+  color: #0b104a;
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  padding: 12px 24px;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+}
+
+.header-btn:hover {
+  color: #ff553e;
+}
+
+/* Floating animation shapes */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out infinite 2s;
+}
+
+/* Preloader spinner */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #0b104a;
+  border-bottom-color: #ff553e;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,7 @@
+node_modules
+dist
+eduleb
+Documentation
+.DS_Store
+*.local
+.env
