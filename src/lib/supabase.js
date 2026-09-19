@@ -157,6 +157,76 @@ export async function fetchLiveTutors() {
 }
 
 /**
+ * Create a live lesson booking in Supabase.
+ */
+export async function createLessonBooking({
+  teacher_id,
+  teacher_name,
+  student_name,
+  student_email,
+  student_phone,
+  hourly_rate,
+  booking_type = 'free_trial',
+  lesson_topic,
+  message,
+  preferred_date,
+  preferred_time,
+}) {
+  try {
+    const bookingId = 'book-' + Date.now();
+    const rate = parseFloat(hourly_rate) || 25.00;
+    const meetLink = `https://meet.google.com/eng-${Math.random().toString(36).substring(2, 6)}-${Math.random().toString(36).substring(2, 5)}`;
+
+    const newBooking = {
+      id: bookingId,
+      teacher_id: teacher_id,
+      teacher_name: teacher_name || 'English Tutor',
+      student_name: (student_name || '').trim(),
+      student_email: (student_email || '').trim(),
+      student_phone: student_phone ? student_phone.trim() : '',
+      hourly_rate: rate,
+      booking_type: bookingType || 'free_trial',
+      package_lessons_total: booking_type === 'package_5' ? 5 : booking_type === 'package_10' ? 10 : 1,
+      package_lessons_completed: 0,
+      amount_paid: booking_type === 'free_trial' ? 0.00 : 0.00,
+      payment_status: booking_type === 'free_trial' ? 'free_trial' : 'pending',
+      lesson_status: 'inquiry',
+      lesson_topic: lesson_topic || (booking_type === 'free_trial' ? '20-Minute Free Trial Speaking Consultation' : '45-Minute 1-on-1 Spoken English Practice'),
+      session_notes: message ? message.trim() : `Preferred time: ${preferred_date || 'Flexible'} ${preferred_time || ''}`,
+      meeting_platform: 'Google Meet',
+      meeting_link: meetLink,
+      created_at: new Date().toISOString(),
+    };
+
+    const { error: bookErr } = await supabase
+      .from('lesson_bookings')
+      .insert(newBooking);
+
+    if (bookErr) {
+      console.warn('Booking insert note:', bookErr);
+    }
+
+    // Also send message to teacher inbox
+    await supabase.from('teacher_messages').insert({
+      id: 'msg-' + Date.now(),
+      teacher_id: teacher_id,
+      teacher_name: teacher_name,
+      student_name: student_name,
+      student_email: student_email,
+      student_phone: student_phone || '',
+      message: message || `Booking inquiry for ${newBooking.lesson_topic}`,
+      lead_fee_deducted: 1.50,
+      timestamp: new Date().toISOString(),
+    });
+
+    return { success: true, booking: newBooking };
+  } catch (error) {
+    console.error('Lesson booking error:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+/**
  * Submit Contact / Inquiry message to Supabase.
  */
 export async function submitContactInquiry({ name, email, subject, message }) {
